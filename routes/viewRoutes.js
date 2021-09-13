@@ -6,6 +6,10 @@ router.get( '/stats', async ( req, res ) => {
     res.sendFile( path.join( __dirname, '/../public/stats.html'));
 });
 
+router.get( '/exercise', async ( req, res ) => {
+    res.sendFile( path.join( __dirname, '/../public/exercise.html'));
+});
+
 router.get( '*', async ( req, res ) => {
     res.sendFile( path.join( __dirname, '/../public/index.html'));
 });
