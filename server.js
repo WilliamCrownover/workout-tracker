@@ -6,8 +6,9 @@ const mongoose = require("mongoose");
 // Server port
 const PORT = process.env.PORT || 3000;
 
-// Require database models
+// Require database models and routes
 const db = require("./models");
+const routes = require("./routes");
 
 // Initialize app express variable
 const app = express();
@@ -17,6 +18,7 @@ app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
+app.use( routes );
 
 // Mongoose connection
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { useNewUrlParser: true });
