@@ -55,4 +55,32 @@ router.post( '/', async ( req, res ) => {
     }
 });
 
+// Get last 7 workouts
+router.get( '/range', async ( req, res ) => {
+    try {
+        const workoutData = await db.Workout.aggregate([
+            {
+                $sort: {
+                    day: -1
+                }
+            },
+            {
+                $limit: 7
+            },
+            {
+                $addFields: {
+                    totalDuration: {
+                        $sum: "$exercises.duration"
+                    }
+                }
+            }
+        ]);
+
+        res.status( 200 ).json( workoutData );
+
+    } catch ( err ) {
+        res.status( 400 ).json( err );
+    }
+});
+
 module.exports = router;
