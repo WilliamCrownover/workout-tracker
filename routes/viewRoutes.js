@@ -1,13 +1,14 @@
+/* eslint-disable no-undef */
 // URL localhost:3000/
 const router = require( 'express' ).Router();
 const path = require( 'path' );
 
 router.get( '/stats', async ( req, res ) => {
-    res.sendFile( path.join( __dirname, '/../public/stats.html'));
-});
+	res.sendFile( path.join( __dirname, '/../public/stats.html' ) );
+} );
 
 router.get( '/exercise', async ( req, res ) => {
-    res.sendFile( path.join( __dirname, '/../public/exercise.html'));
-});
+	res.sendFile( path.join( __dirname, '/../public/exercise.html' ) );
+} );
 
 module.exports = router;
