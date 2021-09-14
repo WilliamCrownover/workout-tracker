@@ -22,7 +22,14 @@ app.use( express.static( 'public' ) );
 app.use( routes );
 
 // Mongoose connection
-mongoose.connect( process.env.MONGODB_URI || 'mongodb://localhost/workout', { useNewUrlParser: true } );
+mongoose.connect( process.env.MONGODB_URI || 'mongodb://localhost/workout',
+	{
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+		useCreateIndex: true,
+		useFindAndModify: false
+	}
+);
 
 // Listen to app
 app.listen( PORT, () => {
